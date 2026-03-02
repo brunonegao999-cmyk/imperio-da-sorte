@@ -9,7 +9,7 @@ exports.handler = async (event) => {
 
         const payload = JSON.stringify({
             transaction_amount: Number(data.amount),
-            description: `Pacote de ${data.quantity} Cotas - Império da Sorte`,
+            description: `Cotas Império da Sorte - ${data.quantity} un`,
             payment_method_id: "pix",
             payer: {
                 email: "cliente@imperiodasorte.com.br",
