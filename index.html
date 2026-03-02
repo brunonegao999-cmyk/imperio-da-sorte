@@ -8,42 +8,87 @@
 
     <title>Império da Sorte | Sorteios Online com Prêmios Incríveis</title>
     <meta name="description" content="Participe dos maiores sorteios do Brasil. Honda Sahara 300, prêmios em dinheiro e muito mais. Compre cotas e concorra agora!">
+    <meta name="keywords" content="sorteio, rifa, honda sahara, prêmios, pix, cotas">
+    <meta name="author" content="Império da Sorte">
+    <meta property="og:title" content="Império da Sorte - Sorteios Online">
+    <meta property="og:description" content="Garante suas cotas agora!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
+        /* CSS INTEGRAL E EXTENSO */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        :root { --primary: #FFD700; --primary-dark: #DAA520; --accent: #22c55e; --accent-dark: #16a34a; --bg: #000000; --bg-secondary: #0A0A0A; --card: #111111; --card-hover: #1A1A1A; --text: #FFFFFF; --text-muted: #888888; --border: #222222; --border-light: #333333; --toast-bg: rgba(20, 20, 20, 0.95); --shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        :root { 
+            --primary: #FFD700; 
+            --primary-dark: #DAA520; 
+            --accent: #22c55e; 
+            --accent-dark: #16a34a; 
+            --bg: #000000; 
+            --bg-secondary: #0A0A0A; 
+            --card: #111111; 
+            --card-hover: #1A1A1A; 
+            --text: #FFFFFF; 
+            --text-muted: #888888; 
+            --border: #222222; 
+            --border-light: #333333; 
+            --toast-bg: rgba(20, 20, 20, 0.95); 
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+        }
+
         body { background: var(--bg); color: var(--text); padding-bottom: 90px; overflow-x: hidden; min-height: 100vh; position: relative; }
-        header { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 12px 20px; padding-top: max(12px, env(safe-area-inset-top)); position: fixed; width: 100%; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+
+        /* HEADER */
+        header { 
+            background: rgba(0, 0, 0, 0.85); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            padding: 12px 20px; 
+            padding-top: max(12px, env(safe-area-inset-top)); 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 100; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid var(--border); 
+        }
         .logo-container { cursor: pointer; display: flex; align-items: center; }
         .logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(135deg, #fff 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .logo img { max-height: 40px; width: auto; display: block; }
+        
         .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); padding: 8px 16px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; transition: all 0.2s; cursor: pointer; }
         .btn-outline:hover { background: var(--primary); color: var(--bg); }
+
         .online-counter { background: rgba(34, 197, 94, 0.15); border: 1px solid var(--accent); border-radius: 30px; padding: 5px 12px; font-size: 0.7rem; display: flex; align-items: center; gap: 5px; color: var(--accent); font-weight: 600; }
         .online-counter i { font-size: 0.5rem; color: var(--accent); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        
+
+        /* HERO */
         .hero { width: 100%; height: 400px; position: relative; background: var(--bg-secondary); overflow: hidden; margin-top: 60px; }
         #hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; display: block; transition: transform 0.3s; }
         .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 20px; background: linear-gradient(to top, var(--bg) 10%, transparent); z-index: 10; }
         .hero-overlay h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 5px; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
         .hero-overlay p { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
 
-        .status-card { background: var(--card); margin: 20px 20px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        /* PROGRESSO E ESTATISTICAS */
+        .status-card { background: var(--card); margin: 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
         .status-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.9rem; }
         .sold-percent { font-weight: 700; color: var(--primary); font-size: 1.5rem; }
         .progress-bar { width: 100%; height: 24px; background: var(--bg-secondary); border-radius: 30px; overflow: hidden; margin: 15px 0 10px 0; border: 1px solid var(--border-light); }
         .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-dark), var(--primary)); border-radius: 30px; transition: width 0.5s ease; }
-        .stats { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
+        .stats { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; margin-top: 5px; }
         .last-units { background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; color: #ff8888; padding: 12px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: 700; font-size: 1rem; animation: blink 1.5s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
+        /* SELOS */
         .trust-badges { display: flex; justify-content: space-around; gap: 10px; margin: 20px 20px 0; flex-wrap: wrap; }
         .trust-badge { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 8px 15px; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-muted); }
         .trust-badge i { color: var(--accent); }
 
+        /* PACOTES */
         .section-title { padding: 0 20px; margin: 30px 0 15px 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
         .packs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 20px; }
         .pack { background: var(--card); border: 2px solid var(--border); border-radius: 18px; padding: 20px 15px; display: flex; flex-direction: column; align-items: center; transition: all 0.2s; cursor: pointer; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
@@ -54,34 +99,56 @@
         .pack-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 5px 0; }
         .pack-multiplier { font-size: 0.7rem; background: var(--primary-dark); color: #000; padding: 2px 8px; border-radius: 20px; margin-top: 8px; font-weight: 700; }
 
+        /* SEÇÕES EXTRAS */
         .past-raffles, .proof-section, .faq-section { background: var(--card); margin: 25px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); }
-        .raffles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .raffles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         .raffle-card { background: var(--bg-secondary); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.2s; }
         .raffle-card img { width: 100%; height: 100px; object-fit: cover; }
         .raffle-info { padding: 10px; }
-        .winners-list { display: flex; flex-direction: column; gap: 12px; }
-        .winner-item { display: flex; align-items: center; gap: 10px; background: var(--bg-secondary); padding: 10px; border-radius: 10px; }
+        .raffle-info h4 { font-size: 0.9rem; margin-bottom: 5px; }
+        .raffle-info p { font-size: 0.75rem; color: var(--primary); font-weight: 600; }
 
+        .winners-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .winner-item { display: flex; align-items: center; gap: 10px; background: var(--bg-secondary); padding: 10px; border-radius: 10px; border: 1px solid var(--border); }
+        .winner-avatar { width: 35px; height: 35px; background: var(--border-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--primary); }
+        
+        .faq-item { border-bottom: 1px solid var(--border); padding: 15px 0; }
+        .faq-question { font-weight: 600; margin-bottom: 5px; color: var(--primary); }
+        .faq-answer { font-size: 0.85rem; color: var(--text-muted); }
+
+        .share-buttons { display: flex; gap: 10px; justify-content: center; margin: 15px 20px; }
+        .share-btn { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 10px 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 0.85rem; }
+
+        /* NOTIFICAÇÃO */
         #notification-container { position: fixed; bottom: 110px; left: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
         .notification { background: var(--toast-bg); backdrop-filter: blur(10px); border-left: 5px solid var(--accent); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); animation: slideIn 0.3s ease; pointer-events: auto; max-width: 350px; margin: 0 auto; width: 100%; color: white;}
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
+        /* MODAIS */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; padding: 20px; padding-top: env(safe-area-inset-top); overflow-y: auto; }
         .modal-content { max-width: 400px; margin: 0 auto; padding: 20px 0; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .modal-header h2 { color: var(--primary); font-size: 1.6rem; }
+        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        
         .input-field { width: 100%; background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 18px 15px; border-radius: 15px; font-size: 1rem; margin-bottom: 15px; outline: none; }
         .btn-modal { width: 100%; background: var(--primary); color: var(--bg); border: none; padding: 18px; border-radius: 15px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; margin-bottom: 10px; }
-        .pix-box { background: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
         
-        /* CORREÇÃO DO PIX: TEXTO BRANCO EM FUNDO ESCURO */
+        .pix-box { background: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
+        /* CORREÇÃO VISUAL PIX: TEXTO BRANCO EM FUNDO ESCURO */
         .copy-field { background: #1a1a1a; border: 2px dashed #444; color: #FFFFFF !important; padding: 15px; border-radius: 15px; font-size: 0.9rem; font-weight: bold; text-align: center; word-break: break-all; margin-bottom: 15px; }
 
+        /* ADMIN */
         .admin-box { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border); }
         .admin-box label { display: block; color: var(--text-muted); margin: 10px 0 5px; font-size: 0.9rem; }
         .raffle-admin-item { background: var(--bg-secondary); border-radius: 10px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
-        .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; }
+        .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
 
-        .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); padding: 12px 20px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
-        .btn-primary { flex: 1; background: var(--primary); border: none; color: var(--bg); font-weight: 800; font-size: 1rem; padding: 15px 10px; border-radius: 14px; text-transform: uppercase; cursor: pointer; }
+        /* FOOTER */
+        .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 12px 20px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
+        .btn-primary { flex: 1; background: var(--primary); border: none; color: var(--bg); font-weight: 800; font-size: 1rem; padding: 15px 10px; border-radius: 14px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2); transition: all 0.2s; cursor: pointer; }
+        .summary-text { font-size: 0.7rem; font-weight: 400; text-transform: none; margin-top: 3px; }
+        .btn-whatsapp { width: 55px; height: 55px; background: var(--accent); border: none; color: white; border-radius: 14px; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -95,8 +162,11 @@
     </header>
 
     <section class="hero">
-        <img id="hero-img" src="" alt="Prêmio">
-        <div class="hero-overlay"><h1 id="hero-title">Carregando...</h1><p id="hero-subtitle"></p></div>
+        <img id="hero-img" src="" alt="Prêmio Principal">
+        <div class="hero-overlay">
+            <h1 id="hero-title">Carregando...</h1>
+            <p id="hero-subtitle"></p>
+        </div>
     </section>
 
     <div class="status-card">
@@ -104,8 +174,9 @@
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="stats">
             <span>💰 Arrecadado: R$ <span id="collected-value">0</span></span>
-            <span>🎟️ Cotas: <span id="sold-quantity">0</span></span>
+            <span>🎟️ Cotas vendidas: <span id="sold-quantity">0</span></span>
         </div>
+        <div id="last-units-warning" class="last-units" style="display: none;">⚡ ÚLTIMAS COTAS! Corra antes que acabe.</div>
     </div>
 
     <div class="trust-badges">
@@ -127,14 +198,17 @@
     </div>
 
     <div class="past-raffles"><h3>SORTEIOS REALIZADOS</h3><div class="raffles-grid" id="raffles-grid"></div></div>
+
     <div class="proof-section"><h3>ÚLTIMOS GANHADORES</h3><div class="winners-list" id="winners-list"></div></div>
+
     <div class="faq-section"><h3>PERGUNTAS FREQUENTES</h3><div id="faq-container"></div></div>
 
     <div id="notification-container"></div>
 
     <div id="modal-id" class="modal">
         <div class="modal-content">
-            <h2>FINALIZAR COMPRA</h2>
+            <div class="modal-header"><h2>FINALIZAR COMPRA</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
+            <p style="margin-bottom: 15px; color: var(--text-muted);">Informe seu WhatsApp para receber os números:</p>
             <input type="tel" id="user-phone" class="input-field" placeholder="WhatsApp com DDD">
             <button class="btn-modal" onclick="processPayment()">GERAR PIX AGORA</button>
             <button class="btn-modal" style="background:#333; color:#fff" onclick="closeModals()">FECHAR</button>
@@ -143,51 +217,75 @@
 
     <div id="modal-pix" class="modal">
         <div class="modal-content" style="text-align:center">
-            <h2 style="color:var(--primary); margin-bottom:15px">PAGAMENTO PIX</h2>
+            <div class="modal-header"><h2>PAGAMENTO PIX</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
             <div class="pix-box">
-                <i class="fab fa-pix" style="font-size:60px; color:#32BCAD; margin-bottom:10px"></i>
+                <i class="fab fa-pix" style="font-size:60px; color:#32BCAD; margin-bottom:15px"></i>
                 <p style="color:#000; font-weight:bold; margin-bottom:10px">Copie o código abaixo e pague no seu banco:</p>
                 <div id="pix-copy-code" class="copy-field">Gerando...</div>
                 <button class="btn-modal" style="background:#32BCAD; color:#fff" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
             </div>
-            <p style="text-align:center; font-size:0.8rem; color:var(--text-muted)">Números liberados após o pagamento.</p>
+            <p style="font-size:0.8rem; color:var(--text-muted)">Números liberados automaticamente após pagar.</p>
         </div>
     </div>
 
     <div id="modal-admin" class="modal">
         <div class="modal-content">
-            <h2 style="margin-bottom:20px">PAINEL DO DONO</h2>
+            <div class="modal-header"><h2>PAINEL DO DONO</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
+            
             <div class="admin-box">
-                <h4>Configurações do Prêmio</h4>
+                <h4>Configurações do Prêmio Principal</h4>
                 <label>Título do Prêmio</label><input type="text" id="adm-title" class="input-field">
                 <label>Subtítulo</label><input type="text" id="adm-subtitle" class="input-field">
-                <label>Link da Imagem (URL do Postimages)</label><input type="text" id="adm-image" class="input-field">
+                <label>Link da Imagem (URL do Postimages)</label>
+                <input type="text" id="adm-image" class="input-field" placeholder="https://exemplo.com/foto.jpg">
                 <label>Meta (R$)</label><input type="number" id="adm-goal" class="input-field">
                 <label>Vendas Atuais (R$)</label><input type="number" id="adm-sold" class="input-field">
                 <button class="btn-modal" onclick="saveAdmin()">SALVAR TUDO NO BANCO</button>
             </div>
+
             <div class="admin-box">
-                <h4>Gerenciar Sorteios</h4>
+                <h4>Gerenciar Sorteios Anteriores</h4>
                 <div id="admin-raffle-list"></div>
                 <button class="btn-modal" style="background:var(--accent)" onclick="addRaffle()">+ ADICIONAR SORTEIO</button>
             </div>
+
             <div class="admin-box">
-                <h4>Personalização</h4>
-                <label>Upload da Logo</label><input type="file" id="logo-upload" accept="image/*" class="input-field" style="padding:10px">
+                <h4>Gerenciar Ganhadores</h4>
+                <div id="admin-winner-list"></div>
+                <button class="btn-modal" style="background:var(--accent)" onclick="addWinner()">+ ADICIONAR GANHADOR</button>
+            </div>
+
+            <div class="admin-box">
+                <h4>Logo do Site</h4>
+                <input type="file" id="logo-upload" accept="image/*" class="input-field" style="padding:10px">
                 <button class="btn-modal" style="background:#666" onclick="resetLogo()">REMOVER LOGO</button>
             </div>
+
             <button class="btn-modal" style="background:#333; color:#fff" onclick="closeModals()">FECHAR PAINEL</button>
         </div>
     </div>
 
+    <div id="modal-check" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>MEUS NÚMEROS</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
+            <input type="tel" id="check-phone" class="input-field" placeholder="Seu WhatsApp">
+            <button class="btn-modal" onclick="alert('Sistema de consulta em manutenção.')">CONSULTAR AGORA</button>
+        </div>
+    </div>
+
     <div class="fixed-footer">
-        <button class="btn-primary" onclick="openModal('modal-id')">QUERO GANHAR<div class="summary-text" id="footer-summary">1.000 cotas • R$ 50,00</div></button>
+        <button class="btn-primary" onclick="openModal('modal-id')">
+            QUERO GANHAR ESTE PRÊMIO
+            <div class="summary-text" id="footer-summary">1.000 cotas • R$ 50,00</div>
+        </button>
+        <a href="https://wa.me/5527998708234" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
+        /* LÓGICA INTEGRAL E EXTENSA */
         const firebaseConfig = {
             apiKey: "AIzaSyAMEwL45IpJ6Vukw28UUyVOC4-DX-OY5MM",
             authDomain: "imperiodasorte-57402.firebaseapp.com",
@@ -200,16 +298,26 @@
         const db = firebase.firestore();
 
         let appData = { title: "", subtitle: "", image: "", goal: 100000, sold: 78500, logo: null };
+        
         let pastRaffles = JSON.parse(localStorage.getItem('past_raffles')) || [
-            { id: 1, title: "Honda CG 160", image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=400", winner: "Carlos A." },
-            { id: 2, title: "R$ 10.000 no PIX", image: "https://images.unsplash.com/photo-1589578228447-e1aa4e96e6f1?w=400", winner: "Mariana S." }
+            { id: 1, title: "Honda Sahara 300", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=400", winner: "Roberto S. - Guarapari" },
+            { id: 2, title: "iPhone 15 Pro", image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400", winner: "João P. - Vitória" }
         ];
+
+        let winnersList = JSON.parse(localStorage.getItem('winners_list')) || [
+            { id: 1, name: "Roberto S.", prize: "Honda Sahara 300" },
+            { id: 2, name: "João M.", prize: "R$ 5.000,00" }
+        ];
+
         let selectedPack = { baseQuantity: 1000, basePrice: 50, multiplier: 1, quantity: 1000, price: 50 };
         let lastSelectedElement = document.querySelector('.pack.active');
 
         function init() {
             db.collection("config").doc("premio_atual").onSnapshot((doc) => {
-                if (doc.exists) { appData = { ...appData, ...doc.data() }; updateUI(); }
+                if (doc.exists) { 
+                    appData = { ...appData, ...doc.data() }; 
+                    updateUI(); 
+                }
             });
             renderLists();
             setInterval(() => {
@@ -228,13 +336,12 @@
             document.getElementById('progress-fill').style.width = p + '%';
             document.getElementById('collected-value').innerText = appData.sold.toLocaleString('pt-BR');
             document.getElementById('sold-quantity').innerText = Math.floor(appData.sold / 0.05).toLocaleString();
-            updateLogo();
-        }
-
-        function updateLogo() {
-            const logoDiv = document.getElementById('logo');
-            if (appData.logo) logoDiv.innerHTML = `<img src="${appData.logo}" style="max-height:40px">`;
-            else logoDiv.innerText = 'IMPÉRIO DA SORTE';
+            document.getElementById('last-units-warning').style.display = p >= 80 ? 'block' : 'none';
+            if (appData.logo) document.getElementById('logo').innerHTML = `<img src="${appData.logo}" style="max-height:40px">`;
+            
+            const luck = document.getElementById('luck-message');
+            if (p < 50) luck.innerText = "Comece agora, suas chances são altas!";
+            else luck.innerText = "🔥 ÚLTIMAS COTAS! Não fique de fora.";
         }
 
         function selectPack(q, p, el) {
@@ -264,7 +371,7 @@
             const phone = document.getElementById('user-phone').value;
             if (phone.length < 8) return alert("Informe seu WhatsApp.");
             const pixCodeContainer = document.getElementById('pix-copy-code');
-            pixCodeContainer.innerText = "Gerando PIX...";
+            pixCodeContainer.innerText = "Gerando PIX no Mercado Pago...";
             openModal('modal-pix');
             try {
                 const res = await fetch('/.netlify/functions/pix', {
@@ -274,7 +381,7 @@
                 const data = await res.json();
                 if (data.qr_code) pixCodeContainer.innerText = data.qr_code;
                 else throw new Error();
-            } catch (e) { pixCodeContainer.innerText = "Erro ao gerar PIX."; }
+            } catch (e) { pixCodeContainer.innerText = "Erro ao gerar PIX. Tente novamente."; }
         }
 
         function copiarPix() {
@@ -291,10 +398,11 @@
             if (prompt('Senha:') === '1234') {
                 document.getElementById('adm-title').value = appData.title.replace(/<br>/g, '\n');
                 document.getElementById('adm-subtitle').value = appData.subtitle;
-                document.getElementById('adm-image').value = appData.image; // PREENCHE O CAMPO
+                document.getElementById('adm-image').value = appData.image; // LINK DA IMAGEM
                 document.getElementById('adm-goal').value = appData.goal;
                 document.getElementById('adm-sold').value = appData.sold;
                 renderAdminRaffles();
+                renderAdminWinners();
                 openModal('modal-admin');
             }
         }
@@ -303,13 +411,13 @@
             const update = {
                 title: document.getElementById('adm-title').value.replace(/\n/g, '<br>'),
                 subtitle: document.getElementById('adm-subtitle').value,
-                image: document.getElementById('adm-image').value, // SALVA O LINK DA IMAGEM
+                image: document.getElementById('adm-image').value, // SALVA O LINK DA IMAGEM CORRETAMENTE
                 goal: parseFloat(document.getElementById('adm-goal').value) || 1,
                 sold: parseFloat(document.getElementById('adm-sold').value) || 0
             };
             try {
                 await db.collection("config").doc("premio_atual").set(update, { merge: true });
-                alert("Site atualizado no banco de dados!");
+                alert("Site atualizado com sucesso!");
                 closeModals();
             } catch (e) { alert("Erro ao salvar: " + e.message); }
         }
@@ -320,8 +428,12 @@
             pastRaffles.slice(-4).forEach(r => {
                 grid.innerHTML += `<div class="raffle-card"><img src="${r.image}"><h4>${r.title}</h4><p>🏆 ${r.winner}</p></div>`;
             });
-            document.getElementById('winners-list').innerHTML = `<div class="winner-item">🏆 Roberto S. - Honda Sahara 300</div><div class="winner-item">🏆 João M. - R$ 5.000,00</div>`;
-            document.getElementById('faq-container').innerHTML = `<div class="faq-item"><strong>Como recebo o prêmio?</strong><p>Entramos em contato via WhatsApp após o sorteio.</p></div><div class="faq-item"><strong>É seguro?</strong><p>Sim, sorteio baseado na Loteria Federal.</p></div>`;
+            const wList = document.getElementById('winners-list');
+            wList.innerHTML = '';
+            winnersList.forEach(w => {
+                wList.innerHTML += `<div class="winner-item"><div class="winner-avatar">🏆</div><div><strong>${w.name}</strong> ganhou ${w.prize}</div></div>`;
+            });
+            document.getElementById('faq-container').innerHTML = `<div class="faq-item"><strong>Como recebo o prêmio?</strong><p>Entramos em contato via WhatsApp após o sorteio.</p></div><div class="faq-item"><strong>É seguro participar?</strong><p>Sim, todos os sorteios são baseados na Loteria Federal.</p></div>`;
         }
 
         function renderAdminRaffles() {
@@ -335,7 +447,7 @@
         function addRaffle() {
             const title = prompt('Título:');
             const winner = prompt('Ganhador:');
-            const image = prompt('Link da Imagem:');
+            const image = prompt('Link da Imagem (URL):');
             if (title && winner && image) {
                 pastRaffles.push({ id: Date.now(), title, winner, image });
                 localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
@@ -349,12 +461,36 @@
             renderLists(); renderAdminRaffles();
         }
 
+        function renderAdminWinners() {
+            const list = document.getElementById('admin-winner-list');
+            list.innerHTML = '';
+            winnersList.forEach(w => {
+                list.innerHTML += `<div class="raffle-admin-item"><span>${w.name}</span><button onclick="removeWinner(${w.id})">Excluir</button></div>`;
+            });
+        }
+
+        function addWinner() {
+            const name = prompt('Nome do Ganhador:');
+            const prize = prompt('Prêmio ganho:');
+            if (name && prize) {
+                winnersList.push({ id: Date.now(), name, prize });
+                localStorage.setItem('winners_list', JSON.stringify(winnersList));
+                renderLists(); renderAdminWinners();
+            }
+        }
+
+        function removeWinner(id) {
+            winnersList = winnersList.filter(w => w.id !== id);
+            localStorage.setItem('winners_list', JSON.stringify(winnersList));
+            renderLists(); renderAdminWinners();
+        }
+
         document.getElementById('logo-upload')?.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (event) => {
-                    appData.logo = event.target.result;
+                reader.onload = (ev) => {
+                    appData.logo = ev.target.result;
                     db.collection("config").doc("premio_atual").update({ logo: appData.logo });
                 };
                 reader.readAsDataURL(file);
