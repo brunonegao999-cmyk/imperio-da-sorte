@@ -6,16 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <title>Império da Sorte | Sorteios Online com Prêmios Incríveis</title>
-    <meta name="description" content="Participe dos maiores sorteios do Brasil. Honda Sahara 300, prêmios em dinheiro e muito mais. Compre cotas e concorra agora!">
-    <meta name="keywords" content="sorteio, rifa, honda sahara, prêmios, pix, cotas">
-    <meta name="author" content="Império da Sorte">
-    <meta property="og:title" content="Império da Sorte - Sorteios Online">
-    <meta property="og:description" content="Participe agora e concorra a prêmios incríveis. Clique e garanta suas cotas!">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80">
-    <meta property="og:url" content="https://www.imperiodasorte.com.br">
-    <meta name="twitter:card" content="summary_large_image">
-
+    <title>Império da Sorte | Sorteios Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -26,98 +17,61 @@
         header { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 12px 20px; padding-top: max(12px, env(safe-area-inset-top)); position: fixed; width: 100%; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
         .logo-container { cursor: pointer; display: flex; align-items: center; }
         .logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(135deg, #fff 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .logo img { max-height: 40px; width: auto; display: block; }
         .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); padding: 8px 16px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; transition: all 0.2s; cursor: pointer; }
-        .btn-outline:hover { background: var(--primary); color: var(--bg); }
         .online-counter { background: rgba(34, 197, 94, 0.15); border: 1px solid var(--accent); border-radius: 30px; padding: 5px 12px; font-size: 0.7rem; display: flex; align-items: center; gap: 5px; color: var(--accent); font-weight: 600; }
         .online-counter i { font-size: 0.5rem; color: var(--accent); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
         .hero { width: 100%; height: 400px; position: relative; background: var(--bg-secondary); overflow: hidden; margin-top: 60px; }
-        #hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; display: block; transition: transform 0.3s; }
+        #hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; display: block; }
         .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 20px; background: linear-gradient(to top, var(--bg) 10%, transparent); z-index: 10; }
-        .hero-overlay h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 5px; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .hero-overlay h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 5px; }
         .hero-overlay p { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
-        .status-card { background: var(--card); margin: 20px 20px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
-        .status-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.9rem; }
+        .status-card { background: var(--card); margin: 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .status-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .sold-percent { font-weight: 700; color: var(--primary); font-size: 1.5rem; }
         .progress-bar { width: 100%; height: 24px; background: var(--bg-secondary); border-radius: 30px; overflow: hidden; margin: 15px 0 10px 0; border: 1px solid var(--border-light); }
         .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-dark), var(--primary)); border-radius: 30px; transition: width 0.5s ease; }
-        .last-units { background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; color: #ff8888; padding: 12px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: 700; font-size: 1rem; animation: blink 1.5s infinite; }
+        .stats { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; margin-top: 5px; }
+        .last-units { background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; color: #ff8888; padding: 12px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: 700; animation: blink 1.5s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        .trust-badges { display: flex; justify-content: space-around; gap: 10px; margin: 20px 20px 0; flex-wrap: wrap; }
+        .trust-badges { display: flex; justify-content: space-around; gap: 10px; margin: 20px; flex-wrap: wrap; }
         .trust-badge { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 8px 15px; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-muted); }
-        .trust-badge i { color: var(--accent); }
         .section-title { padding: 0 20px; margin: 30px 0 15px 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
         .packs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 20px; }
-        .pack { background: var(--card); border: 2px solid var(--border); border-radius: 18px; padding: 20px 15px; display: flex; flex-direction: column; align-items: center; transition: all 0.2s; cursor: pointer; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .pack:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(255,215,0,0.2); }
+        .pack { background: var(--card); border: 2px solid var(--border); border-radius: 18px; padding: 20px 15px; display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; }
         .pack.active { border-color: var(--primary); background: rgba(255, 215, 0, 0.05); transform: scale(1.02); }
         .pack-badge { position: absolute; top: -10px; background: var(--primary); color: var(--bg); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
         .pack-quantity { font-size: 2.2rem; font-weight: 800; line-height: 1; margin: 5px 0; }
-        .pack-quantity small { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
         .pack-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 5px 0; }
-        .price-per-ticket { font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; }
         .pack-multiplier { font-size: 0.7rem; background: var(--primary-dark); color: #000; padding: 2px 8px; border-radius: 20px; margin-top: 8px; font-weight: 700; }
         .past-raffles { background: var(--card); margin: 25px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); }
-        .past-raffles h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 500; }
+        .past-raffles h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 15px; }
         .raffles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .raffle-card { background: var(--bg-secondary); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.2s; }
-        .raffle-card:hover { transform: scale(1.02); }
+        .raffle-card { background: var(--bg-secondary); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); }
         .raffle-card img { width: 100%; height: 100px; object-fit: cover; }
         .raffle-info { padding: 10px; }
         .raffle-info h4 { font-size: 0.9rem; margin-bottom: 5px; }
         .raffle-info p { font-size: 0.75rem; color: var(--primary); font-weight: 600; }
         .proof-section { background: var(--card); margin: 25px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); }
-        .proof-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .proof-header h3 { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
-        .proof-header span { color: var(--primary); font-size: 0.8rem; cursor: default; }
-        .winners-list { display: flex; flex-direction: column; gap: 12px; max-height: 200px; overflow-y: auto; padding-right: 5px; }
-        .winner-item { display: flex; align-items: center; gap: 10px; }
-        .winner-avatar { width: 35px; height: 35px; background: var(--border-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--primary); font-size: 0.8rem; }
-        .winner-info { flex: 1; }
-        .winner-name { font-weight: 600; font-size: 0.9rem; }
-        .winner-desc { font-size: 0.75rem; color: var(--text-muted); }
-        .winner-prize { font-weight: 700; color: var(--primary); }
-        .testimonial { background: var(--bg-secondary); padding: 15px; border-radius: 15px; margin-top: 15px; border: 1px solid var(--border); }
-        .testimonial-text { font-size: 0.85rem; font-style: italic; margin-bottom: 10px; color: #ddd; }
-        .testimonial-author { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
+        .winners-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
         .faq-section { background: var(--card); margin: 25px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); }
-        .faq-section h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 500; }
         .faq-item { border-bottom: 1px solid var(--border); padding: 15px 0; }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-question { font-weight: 600; margin-bottom: 5px; color: var(--primary); }
-        .faq-answer { font-size: 0.85rem; color: var(--text-muted); }
         .share-buttons { display: flex; gap: 10px; justify-content: center; margin: 15px 20px; }
-        .share-btn { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 10px 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
-        .share-btn i { color: var(--primary); }
-        .share-btn:hover { background: var(--card-hover); }
+        .share-btn { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 10px 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 0.85rem; }
         #notification-container { position: fixed; bottom: 110px; left: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
         .notification { background: var(--toast-bg); backdrop-filter: blur(10px); border-left: 5px solid var(--accent); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); animation: slideIn 0.3s ease; pointer-events: auto; max-width: 350px; margin: 0 auto; width: 100%; color: white;}
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 12px 20px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
-        .btn-primary { flex: 1; background: var(--primary); border: none; color: var(--bg); font-weight: 800; font-size: 1rem; padding: 15px 10px; border-radius: 14px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2); transition: all 0.2s; cursor: pointer; }
-        .btn-primary:active { background: var(--primary-dark); transform: scale(0.98); }
-        .btn-whatsapp { width: 55px; height: 55px; background: var(--accent); border: none; color: white; border-radius: 14px; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; text-decoration: none; }
-        .btn-whatsapp:active { background: var(--accent-dark); transform: scale(0.95); }
-        .summary-text { font-size: 0.7rem; font-weight: 400; text-transform: none; margin-top: 3px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; padding: 20px; padding-top: env(safe-area-inset-top); overflow-y: auto; }
+        .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); padding: 12px 20px; border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
+        .btn-primary { flex: 1; background: var(--primary); border: none; color: var(--bg); font-weight: 800; font-size: 1rem; padding: 15px 10px; border-radius: 14px; text-transform: uppercase; cursor: pointer; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; padding: 20px; overflow-y: auto; }
         .modal-content { max-width: 400px; margin: 0 auto; padding: 20px 0; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .modal-header h2 { color: var(--primary); font-size: 1.6rem; }
-        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
-        .input-field { width: 100%; background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 18px 15px; border-radius: 15px; font-size: 1rem; margin-bottom: 15px; outline: none; transition: border-color 0.2s; }
-        .input-field:focus { border-color: var(--primary); }
-        .btn-modal { width: 100%; background: var(--primary); color: var(--bg); border: none; padding: 18px; border-radius: 15px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px; cursor: pointer; transition: background 0.2s; }
-        .btn-modal:active { background: var(--primary-dark); }
-        .btn-modal-secondary { background: var(--accent); color: white; }
+        .input-field { width: 100%; background: var(--card); border: 2px solid var(--border); color: var(--text); padding: 18px 15px; border-radius: 15px; font-size: 1rem; margin-bottom: 15px; outline: none; }
+        .btn-modal { width: 100%; background: var(--primary); color: var(--bg); border: none; padding: 18px; border-radius: 15px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; margin-bottom: 10px; }
         .pix-box { background: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
-        .pix-box i { font-size: 60px; color: #32BCAD; margin-bottom: 10px; }
-        /* CORREÇÃO VISUAL PIX */
+        /* CORREÇÃO VISUAL PIX: FUNDO ESCURO E FONTE BRANCA */
         .copy-field { background: #222222; border: 2px dashed #444; color: #FFFFFF !important; padding: 15px; border-radius: 15px; font-size: 0.9rem; font-weight: bold; text-align: center; word-break: break-all; margin-bottom: 15px; }
         .admin-box { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border); }
         .admin-box label { display: block; color: var(--text-muted); margin: 10px 0 5px; font-size: 0.9rem; }
-        .raffle-admin-item { background: var(--bg-secondary); border-radius: 10px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
-        .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -126,18 +80,22 @@
         <div class="logo-container" ondblclick="toggleAdmin()"><div class="logo" id="logo">IMPÉRIO DA SORTE</div></div>
         <div style="display: flex; align-items: center; gap: 10px;">
             <div class="online-counter"><i class="fas fa-circle"></i> <span id="online-count">1.847</span> online</div>
-            <button class="btn-outline" onclick="openModal('modal-check')"><i class="fas fa-ticket-alt"></i> MEUS NÚMEROS</button>
+            <button class="btn-outline" onclick="openModal('modal-check')">MEUS NÚMEROS</button>
         </div>
     </header>
 
     <section class="hero">
         <img id="hero-img" src="" alt="Prêmio">
-        <div class="hero-overlay"><h1 id="hero-title">HONDA SAHARA</h1><p id="hero-subtitle"></p></div>
+        <div class="hero-overlay"><h1 id="hero-title">Carregando...</h1><p id="hero-subtitle"></p></div>
     </section>
 
     <div class="status-card">
         <div class="status-header"><span>🔥 VENDIDO</span><span class="sold-percent" id="percent-sold">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="stats">
+            <span>💰 Arrecadado: R$ <span id="collected-value">0</span></span>
+            <span>🎟️ Cotas vendidas: <span id="sold-quantity">0</span></span>
+        </div>
         <div id="last-units-warning" class="last-units" style="display: none;">⚡ ÚLTIMAS COTAS!</div>
     </div>
 
@@ -160,38 +118,50 @@
 
     <div class="past-raffles"><h3>SORTEIOS REALIZADOS</h3><div class="raffles-grid" id="raffles-grid"></div></div>
 
-    <div class="proof-section">
-        <div class="proof-header"><h3>ÚLTIMOS GANHADORES</h3><span>Ver todos →</span></div>
-        <div class="winners-list" id="winners-list"></div>
+    <div class="proof-section"><h3>ÚLTIMOS GANHADORES</h3><div class="winners-list" id="winners-list"></div></div>
+
+    <div class="faq-section"><h3>PERGUNTAS FREQUENTES</h3><div id="faq-container"></div></div>
+
+    <div class="share-buttons">
+        <a href="#" class="share-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#" class="share-btn"><i class="fab fa-facebook"></i> Facebook</a>
     </div>
 
     <div id="notification-container"></div>
 
     <div id="modal-id" class="modal">
         <div class="modal-content">
-            <div class="modal-header"><h2>FINALIZAR</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
-            <p style="margin-bottom: 15px; color: var(--text-muted);">Informe seu WhatsApp para receber os números:</p>
+            <h2 style="color:var(--primary); margin-bottom:15px">FINALIZAR COMPRA</h2>
             <input type="tel" id="user-phone" class="input-field" placeholder="WhatsApp com DDD">
             <button class="btn-modal" onclick="processPayment()">GERAR PIX AGORA</button>
+            <button class="btn-modal" style="background:#333; color:#fff" onclick="closeModals()">FECHAR</button>
         </div>
     </div>
 
     <div id="modal-pix" class="modal">
         <div class="modal-content" style="text-align:center">
-            <div class="modal-header"><h2>PAGAMENTO PIX</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
+            <h2 style="color:var(--primary); margin-bottom:15px">PAGAMENTO PIX</h2>
             <div class="pix-box">
-                <i class="fab fa-pix"></i>
-                <p style="color:#000; font-weight:bold; margin-bottom:10px">Copie e pague no seu banco:</p>
+                <p style="color:#000; font-weight:bold; margin-bottom:10px">Copie o código abaixo e pague no seu banco:</p>
                 <div id="pix-copy-code" class="copy-field">Gerando...</div>
                 <button class="btn-modal" style="background:#32BCAD" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
             </div>
-            <p style="text-align:center; font-size:0.8rem; color:var(--text-muted)">Números liberados após o pagamento.</p>
+            <button class="btn-modal" style="background:#333; color:#fff" onclick="closeModals()">SAIR</button>
+        </div>
+    </div>
+
+    <div id="modal-check" class="modal">
+        <div class="modal-content">
+            <h2>MEUS NÚMEROS</h2>
+            <input type="tel" id="check-phone" class="input-field" placeholder="WhatsApp">
+            <button class="btn-modal" onclick="alert('Consulta em manutenção.')">CONSULTAR</button>
+            <button class="btn-modal" style="background:#333; color:#fff" onclick="closeModals()">FECHAR</button>
         </div>
     </div>
 
     <div id="modal-admin" class="modal">
         <div class="modal-content">
-            <div class="modal-header"><h2>PAINEL ADM</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
+            <h2>PAINEL ADM</h2>
             <div class="admin-box">
                 <label>Título</label><input type="text" id="adm-title" class="input-field">
                 <label>Subtítulo</label><input type="text" id="adm-subtitle" class="input-field">
@@ -200,12 +170,12 @@
                 <label>Vendido (R$)</label><input type="number" id="adm-sold" class="input-field">
             </div>
             <button class="btn-modal" onclick="saveAdmin()">SALVAR NO BANCO</button>
+            <button class="btn-modal" style="background:#333; color:#fff" onclick="closeModals()">FECHAR</button>
         </div>
     </div>
 
     <div class="fixed-footer">
         <button class="btn-primary" onclick="openModal('modal-id')">QUERO GANHAR<div class="summary-text" id="footer-summary">1.000 cotas • R$ 50,00</div></button>
-        <a href="https://wa.me/5527998708234" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -231,19 +201,19 @@
             db.collection("config").doc("premio_atual").onSnapshot((doc) => {
                 if (doc.exists) { appData = doc.data(); updateUI(); }
             });
-            setInterval(() => {
-                let count = Math.floor(Math.random() * 500) + 1500;
-                document.getElementById('online-count').innerText = count.toLocaleString();
-            }, 5000);
+            renderData();
         }
 
         function updateUI() {
             document.getElementById('hero-title').innerHTML = appData.title || "Sorteio";
             document.getElementById('hero-subtitle').innerText = appData.subtitle || "";
             document.getElementById('hero-img').src = appData.image || "";
-            const percent = (appData.sold / appData.goal) * 100;
-            document.getElementById('percent-sold').innerText = percent.toFixed(1) + '%';
-            document.getElementById('progress-fill').style.width = percent + '%';
+            const p = (appData.sold / appData.goal) * 100;
+            document.getElementById('percent-sold').innerText = p.toFixed(1) + '%';
+            document.getElementById('progress-fill').style.width = p + '%';
+            document.getElementById('collected-value').innerText = appData.sold.toLocaleString('pt-BR');
+            document.getElementById('sold-quantity').innerText = Math.floor(appData.sold / 0.05).toLocaleString();
+            document.getElementById('last-units-warning').style.display = p >= 80 ? 'block' : 'none';
         }
 
         function selectPack(q, p, el) {
@@ -291,11 +261,11 @@
         function copiarPix() {
             const code = document.getElementById('pix-copy-code').innerText;
             navigator.clipboard.writeText(code);
-            const t = document.createElement('div');
-            t.className = 'notification';
-            t.innerHTML = `<i class="fas fa-check-circle"></i> PIX Copiado com Sucesso!`;
-            document.getElementById('notification-container').appendChild(t);
-            setTimeout(() => t.remove(), 4000);
+            const toast = document.createElement('div');
+            toast.className = 'notification';
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> PIX Copiado com Sucesso!`;
+            document.getElementById('notification-container').appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
         }
 
         function toggleAdmin() {
@@ -320,6 +290,13 @@
             await db.collection("config").doc("premio_atual").set(update, { merge: true });
             alert("Site atualizado!");
             closeModals();
+        }
+
+        function renderData() {
+            // Renderiza FAQ e Sorteios Estáticos
+            document.getElementById('faq-container').innerHTML = `<div class="faq-item"><p class="faq-question" style="color:var(--primary); font-weight:700">Como funciona?</p><p class="faq-answer" style="color:var(--text-muted); font-size:0.9rem">Compre cotas e aguarde o sorteio pela Loteria Federal.</p></div>`;
+            document.getElementById('raffles-grid').innerHTML = `<div class="raffle-card"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=400&q=80"><h4>Último Sorteio</h4><p>Honda Sahara 300</p></div>`;
+            document.getElementById('winners-list').innerHTML = `<div style="background:var(--bg-secondary); padding:10px; border-radius:10px">🏆 João M. - R$ 5.000,00</div>`;
         }
 
         function openModal(id) { document.getElementById(id).style.display = 'block'; }
