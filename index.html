@@ -42,7 +42,6 @@
         .sold-percent { font-weight: 700; color: var(--primary); font-size: 1.5rem; }
         .progress-bar { width: 100%; height: 24px; background: var(--bg-secondary); border-radius: 30px; overflow: hidden; margin: 15px 0 10px 0; border: 1px solid var(--border-light); }
         .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-dark), var(--primary)); border-radius: 30px; transition: width 0.5s ease; }
-        .stats { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
         .last-units { background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; color: #ff8888; padding: 12px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: 700; font-size: 1rem; animation: blink 1.5s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
         .trust-badges { display: flex; justify-content: space-around; gap: 10px; margin: 20px 20px 0; flex-wrap: wrap; }
@@ -92,15 +91,8 @@
         .share-btn { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 10px 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
         .share-btn i { color: var(--primary); }
         .share-btn:hover { background: var(--card-hover); }
-        #notification-container { position: fixed; bottom: 110px; left: 20px; right: 20px; z-index: 200; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
-        .notification { background: var(--toast-bg); backdrop-filter: blur(10px); border-left: 5px solid var(--primary); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); animation: slideIn 0.3s ease; pointer-events: auto; max-width: 350px; margin: 0 auto; width: 100%; }
-        .notification.winner { border-left-color: var(--accent); }
-        .notification.winner i { color: var(--accent); }
-        .notification i { font-size: 1.2rem; color: var(--primary); }
-        .notification-content { flex: 1; }
-        .notification-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 2px; }
-        .notification-desc { font-size: 0.8rem; color: var(--text-muted); }
-        .notification-close { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 5px; }
+        #notification-container { position: fixed; bottom: 110px; left: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+        .notification { background: var(--toast-bg); backdrop-filter: blur(10px); border-left: 5px solid var(--accent); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); animation: slideIn 0.3s ease; pointer-events: auto; max-width: 350px; margin: 0 auto; width: 100%; color: white;}
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 12px 20px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
         .btn-primary { flex: 1; background: var(--primary); border: none; color: var(--bg); font-weight: 800; font-size: 1rem; padding: 15px 10px; border-radius: 14px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2); transition: all 0.2s; cursor: pointer; }
@@ -119,282 +111,107 @@
         .btn-modal:active { background: var(--primary-dark); }
         .btn-modal-secondary { background: var(--accent); color: white; }
         .pix-box { background: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
-        .pix-box i { font-size: 150px; color: var(--bg); }
-        .copy-field { background: var(--card); border: 2px dashed var(--border); color: var(--text); padding: 15px; border-radius: 15px; font-size: 0.8rem; text-align: center; word-break: break-all; }
-        .order-summary { background: var(--card); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
-        .order-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1rem; }
-        .order-total { border-top: 1px solid var(--border); margin-top: 10px; padding-top: 15px; font-weight: 700; font-size: 1.2rem; }
-        .order-total span { color: var(--accent); }
-        .loading { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .pix-box i { font-size: 60px; color: #32BCAD; margin-bottom: 10px; }
+        /* CORREÇÃO VISUAL PIX */
+        .copy-field { background: #222222; border: 2px dashed #444; color: #FFFFFF !important; padding: 15px; border-radius: 15px; font-size: 0.9rem; font-weight: bold; text-align: center; word-break: break-all; margin-bottom: 15px; }
         .admin-box { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border); }
         .admin-box label { display: block; color: var(--text-muted); margin: 10px 0 5px; font-size: 0.9rem; }
         .raffle-admin-item { background: var(--bg-secondary); border-radius: 10px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
         .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
-        .ticket-number { background: var(--primary); color: var(--bg); padding: 5px 8px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; display: inline-block; margin: 3px; }
-        .btn-download { background: var(--accent); color: white; border: none; border-radius: 10px; padding: 10px; width: 100%; font-weight: 600; margin-top: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container" ondblclick="toggleAdmin()" aria-label="Página inicial Império da Sorte">
-            <div class="logo" id="logo">
-                </div>
-        </div>
+        <div class="logo-container" ondblclick="toggleAdmin()"><div class="logo" id="logo">IMPÉRIO DA SORTE</div></div>
         <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="online-counter" id="online-counter" aria-label="Pessoas online agora">
-                <i class="fas fa-circle" aria-hidden="true"></i> <span id="online-count">1.847</span> online
-            </div>
-            <button class="btn-outline" onclick="openModal('modal-check')" aria-label="Consultar meus números">
-                <i class="fas fa-ticket-alt" aria-hidden="true"></i> MEUS NÚMEROS
-            </button>
+            <div class="online-counter"><i class="fas fa-circle"></i> <span id="online-count">1.847</span> online</div>
+            <button class="btn-outline" onclick="openModal('modal-check')"><i class="fas fa-ticket-alt"></i> MEUS NÚMEROS</button>
         </div>
     </header>
 
     <section class="hero">
-        <img id="hero-img" src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80" alt="Prêmio Honda Sahara 300">
-        <div class="hero-overlay">
-            <h1 id="hero-title">HONDA SAHARA 300<br>2026 ZERADA</h1>
-            <p id="hero-subtitle">OU R$ 35.000 NO PIX</p>
-        </div>
+        <img id="hero-img" src="" alt="Prêmio">
+        <div class="hero-overlay"><h1 id="hero-title">HONDA SAHARA</h1><p id="hero-subtitle"></p></div>
     </section>
 
     <div class="status-card">
-        <div class="status-header">
-            <span>🔥 VENDIDO</span>
-            <span class="sold-percent" id="percent-sold">0%</span>
-        </div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
-        </div>
-        <div class="stats">
-            <span>💰 Arrecadado: R$ <span id="collected-value">0</span></span>
-            <span>🎟️ Cotas vendidas: <span id="sold-quantity">0</span></span>
-        </div>
-        <div id="last-units-warning" class="last-units" style="display: none;">
-            ⚡ ÚLTIMAS COTAS! Corra antes que acabe.
-        </div>
+        <div class="status-header"><span>🔥 VENDIDO</span><span class="sold-percent" id="percent-sold">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div id="last-units-warning" class="last-units" style="display: none;">⚡ ÚLTIMAS COTAS!</div>
     </div>
 
     <div class="trust-badges">
-        <div class="trust-badge"><i class="fas fa-lock"></i> Pagamento 100% seguro</div>
+        <div class="trust-badge"><i class="fas fa-lock"></i> Pagamento seguro</div>
         <div class="trust-badge"><i class="fas fa-bolt"></i> Entrega imediata</div>
-        <div class="trust-badge"><i class="fas fa-check-circle"></i> Sorteio homologado</div>
-        <div class="trust-badge"><i class="fas fa-shield-alt"></i> Site protegido</div>
     </div>
 
-    <div class="section-title">
-        <i class="fas fa-cubes" style="margin-right: 5px; color: var(--primary);"></i> ESCOLHA SEU PACOTE (CLIQUE PARA ACUMULAR)
-    </div>
-    
+    <div class="section-title">ESCOLHA SEU PACOTE (CLIQUE PARA ACUMULAR)</div>
     <div class="packs-grid">
-        <div class="pack" onclick="selectPack(100, 5, this)" role="button" tabindex="0" aria-label="100 cotas por R$5">
-            <span class="pack-quantity">100 <small>cotas</small></span>
-            <span class="pack-price">R$ 5</span>
-            <span class="price-per-ticket">menos de 10 centavos por cota</span>
-            <span class="pack-multiplier" id="mult-100">0x</span>
-        </div>
-        <div class="pack active" onclick="selectPack(1000, 50, this)" role="button" tabindex="0" aria-label="1000 cotas por R$50, mais vendido">
-            <div class="pack-badge">MAIS VENDIDO</div>
-            <span class="pack-quantity">1.000 <small>cotas</small></span>
-            <span class="pack-price">R$ 50</span>
-            <span class="price-per-ticket">menos de 10 centavos por cota</span>
-            <span class="pack-multiplier" id="mult-1000">1x</span>
-        </div>
-        <div class="pack" onclick="selectPack(5000, 250, this)" role="button" tabindex="0" aria-label="5000 cotas por R$250">
-            <span class="pack-quantity">5.000 <small>cotas</small></span>
-            <span class="pack-price">R$ 250</span>
-            <span class="price-per-ticket">menos de 10 centavos por cota</span>
-            <span class="pack-multiplier" id="mult-5000">0x</span>
-        </div>
-        <div class="pack" onclick="selectPack(20000, 1000, this)" role="button" tabindex="0" aria-label="20000 cotas por R$1000">
-            <div class="pack-badge" style="background: #fff; color: #000;">💎 BALEIA</div>
-            <span class="pack-quantity">20.000 <small>cotas</small></span>
-            <span class="pack-price">R$ 1.000</span>
-            <span class="price-per-ticket">menos de 10 centavos por cota</span>
-            <span class="pack-multiplier" id="mult-20000">0x</span>
-        </div>
+        <div class="pack" onclick="selectPack(100, 5, this)"><span class="pack-quantity">100 <small>cotas</small></span><span class="pack-price">R$ 5</span><span class="pack-multiplier" id="mult-100">0x</span></div>
+        <div class="pack active" onclick="selectPack(1000, 50, this)"><div class="pack-badge">MAIS VENDIDO</div><span class="pack-quantity">1.000 <small>cotas</small></span><span class="pack-price">R$ 50</span><span class="pack-multiplier" id="mult-1000">1x</span></div>
+        <div class="pack" onclick="selectPack(5000, 250, this)"><span class="pack-quantity">5.000 <small>cotas</small></span><span class="pack-price">R$ 250</span><span class="pack-multiplier" id="mult-5000">0x</span></div>
+        <div class="pack" onclick="selectPack(20000, 1000, this)"><div class="pack-badge" style="background:#fff;color:#000">💎 BALEIA</div><span class="pack-quantity">20.000 <small>cotas</small></span><span class="pack-price">R$ 1.000</span><span class="pack-multiplier" id="mult-20000">0x</span></div>
     </div>
 
     <div style="margin: 20px; background: var(--card); border-radius: 15px; padding: 15px; border: 1px solid var(--border);">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-chart-line" style="color: var(--primary); font-size: 1.5rem;"></i>
-            <div>
-                <span style="font-weight: 600;">Termômetro da Sorte</span>
-                <p id="luck-message" style="font-size: 0.8rem; color: var(--text-muted);">Você está a poucos números de ganhar!</p>
-            </div>
-        </div>
+        <div style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-chart-line" style="color: var(--primary); font-size: 1.5rem;"></i><div><span style="font-weight: 600;">Termômetro da Sorte</span><p id="luck-message" style="font-size: 0.8rem; color: var(--text-muted);">Você está a poucos números de ganhar!</p></div></div>
     </div>
 
-    <div class="past-raffles">
-        <h3><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 5px;"></i> SORTEIOS REALIZADOS</h3>
-        <div class="raffles-grid" id="raffles-grid"></div>
-    </div>
+    <div class="past-raffles"><h3>SORTEIOS REALIZADOS</h3><div class="raffles-grid" id="raffles-grid"></div></div>
 
     <div class="proof-section">
-        <div class="proof-header">
-            <h3><i class="fas fa-trophy" style="color: var(--primary); margin-right: 5px;"></i> ÚLTIMOS GANHADORES</h3>
-            <span>Ver todos →</span>
-        </div>
+        <div class="proof-header"><h3>ÚLTIMOS GANHADORES</h3><span>Ver todos →</span></div>
         <div class="winners-list" id="winners-list"></div>
-        <div class="testimonial">
-            <div class="testimonial-text">"Comprei 100 cotas e ganhei na mesma semana! Plataforma confiável demais."</div>
-            <div class="testimonial-author">— Roberto S. • Guarapari</div>
-        </div>
-    </div>
-
-    <div class="faq-section">
-        <h3><i class="fas fa-question-circle" style="color: var(--primary); margin-right: 5px;"></i> PERGUNTAS FREQUENTES</h3>
-        <div class="faq-item">
-            <div class="faq-question">Como funciona o sorteio?</div>
-            <div class="faq-answer">Você compra cotas e recebe números da sorte. O sorteio é realizado ao atingir a meta, com transmissão ao vivo.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">É seguro?</div>
-            <div class="faq-answer">Totalmente! Utilizamos criptografia e o pagamento é processado por gateways confiáveis.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Como recebo o prêmio?</div>
-            <div class="faq-answer">Entramos em contato via WhatsApp e transferimos o valor ou combinamos a entrega do veículo.</div>
-        </div>
-    </div>
-
-    <div class="share-buttons">
-        <a href="#" class="share-btn" onclick="shareOnWhatsApp('general')" aria-label="Compartilhar no WhatsApp"><i class="fab fa-whatsapp"></i> Compartilhar</a>
-        <a href="#" class="share-btn" onclick="shareOnFacebook()" aria-label="Compartilhar no Facebook"><i class="fab fa-facebook"></i> Compartilhar</a>
     </div>
 
     <div id="notification-container"></div>
 
     <div id="modal-id" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>FINALIZAR COMPRA</h2>
-                <button class="btn-close" onclick="closeModals()">✕</button>
-            </div>
-            <p style="margin-bottom: 15px; color: var(--text-muted);">Digite seu WhatsApp para podermos te enviar os números da sorte e avisar se você ganhar!</p>
-            <input type="tel" id="user-phone" class="input-field" placeholder="(DD) 99999-9999">
+            <div class="modal-header"><h2>FINALIZAR</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
+            <p style="margin-bottom: 15px; color: var(--text-muted);">Informe seu WhatsApp para receber os números:</p>
+            <input type="tel" id="user-phone" class="input-field" placeholder="WhatsApp com DDD">
             <button class="btn-modal" onclick="processPayment()">GERAR PIX AGORA</button>
         </div>
     </div>
 
     <div id="modal-pix" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>PAGAMENTO PIX</h2>
-                <button class="btn-close" onclick="closeModals()">✕</button>
-            </div>
+        <div class="modal-content" style="text-align:center">
+            <div class="modal-header"><h2>PAGAMENTO PIX</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
             <div class="pix-box">
-                <i class="fab fa-pix" style="font-size: 60px; color: #32BCAD; margin-bottom: 10px;"></i>
-                <p style="color: #000; font-weight: bold; margin-bottom: 10px;">Copie o código abaixo e pague no seu banco:</p>
-                <div id="pix-copy-code" class="copy-field" style="color: #000; font-weight: bold; word-break: break-all;">Gerando...</div>
-                <button class="btn-modal" style="background: #32BCAD; margin-top: 15px;" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
+                <i class="fab fa-pix"></i>
+                <p style="color:#000; font-weight:bold; margin-bottom:10px">Copie e pague no seu banco:</p>
+                <div id="pix-copy-code" class="copy-field">Gerando...</div>
+                <button class="btn-modal" style="background:#32BCAD" onclick="copiarPix()">COPIAR CÓDIGO PIX</button>
             </div>
-            <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Seus números são liberados automaticamente após o pagamento.</p>
-        </div>
-    </div>
-
-    <div id="modal-check" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>MEUS NÚMEROS</h2>
-                <button class="btn-close" onclick="closeModals()">✕</button>
-            </div>
-            <input type="tel" id="check-phone" class="input-field" placeholder="(DD) 99999-9999">
-            <button class="btn-modal" onclick="searchTickets()">CONSULTAR</button>
+            <p style="text-align:center; font-size:0.8rem; color:var(--text-muted)">Números liberados após o pagamento.</p>
         </div>
     </div>
 
     <div id="modal-admin" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>PAINEL DO DONO</h2>
-                <button class="btn-close" onclick="closeModals()">✕</button>
-            </div>
-            
+            <div class="modal-header"><h2>PAINEL ADM</h2><button class="btn-close" onclick="closeModals()">✕</button></div>
             <div class="admin-box">
-                <label for="adm-title">Título do Prêmio</label>
-                <input type="text" id="adm-title" class="input-field" value="HONDA SAHARA 300<br>2026 ZERADA">
-                
-                <label for="adm-subtitle">Subtítulo</label>
-                <input type="text" id="adm-subtitle" class="input-field" value="OU R$ 35.000 NO PIX">
-                
-                <label for="adm-image">Imagem (URL)</label>
-                <input type="text" id="adm-image" class="input-field" value="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80">
-                
-                <label for="adm-file">Upload de Imagem (para o prêmio)</label>
-                <input type="file" id="adm-file" accept="image/*" class="input-field" style="padding: 10px;">
-                
-                <label for="adm-goal">Meta (R$)</label>
-                <input type="number" id="adm-goal" class="input-field" value="100000">
-                
-                <label for="adm-sold">Vendas Atuais (R$)</label>
-                <input type="number" id="adm-sold" class="input-field" value="78500">
+                <label>Título</label><input type="text" id="adm-title" class="input-field">
+                <label>Subtítulo</label><input type="text" id="adm-subtitle" class="input-field">
+                <label>Link da Imagem (URL)</label><input type="text" id="adm-image" class="input-field">
+                <label>Meta (R$)</label><input type="number" id="adm-goal" class="input-field">
+                <label>Vendido (R$)</label><input type="number" id="adm-sold" class="input-field">
             </div>
-
-            <div class="admin-box">
-                <h4 style="color: var(--primary); margin-bottom: 10px;">Personalizar Logo</h4>
-                <label for="logo-upload">Upload da Logo (imagem)</label>
-                <input type="file" id="logo-upload" accept="image/*" class="input-field" style="padding: 10px;">
-                <div id="logo-preview" style="margin-top: 10px; text-align: center;"></div>
-                <button class="btn-modal" style="background: #666;" onclick="resetLogo()">Remover Logo</button>
-            </div>
-
-            <div class="admin-box">
-                <h4 style="color: var(--primary); margin-bottom: 10px;">Gerenciar Sorteios Realizados</h4>
-                <div id="admin-raffle-list"></div>
-                <button class="btn-modal" style="background: var(--accent); margin-bottom: 10px;" onclick="addRaffle()">+ Adicionar Sorteio (URL)</button>
-                <button class="btn-modal" style="background: var(--primary);" onclick="openModal('modal-add-raffle')">+ Adicionar Sorteio com Upload</button>
-            </div>
-
-            <div class="admin-box">
-                <h4 style="color: var(--primary); margin-bottom: 10px;">Configurações</h4>
-                <label>
-                    <input type="checkbox" id="sound-enabled"> Ativar sons de notificação
-                </label>
-            </div>
-            
-            <button class="btn-modal" onclick="saveAdmin()">SALVAR TUDO</button>
-        </div>
-    </div>
-
-    <div id="modal-add-raffle" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>NOVO SORTEIO</h2>
-                <button class="btn-close" onclick="closeModals()">✕</button>
-            </div>
-            <label for="raffle-title">Título do prêmio</label>
-            <input type="text" id="raffle-title" class="input-field" placeholder="Ex: Honda CG 160">
-            
-            <label for="raffle-winner">Ganhador (ex: João - Vitória)</label>
-            <input type="text" id="raffle-winner" class="input-field" placeholder="Ex: João - Vitória">
-            
-            <label for="raffle-image-upload">Imagem do prêmio</label>
-            <input type="file" id="raffle-image-upload" accept="image/*" class="input-field" style="padding: 10px;">
-            
-            <button class="btn-modal" onclick="addRaffleWithUpload()">SALVAR SORTEIO</button>
+            <button class="btn-modal" onclick="saveAdmin()">SALVAR NO BANCO</button>
         </div>
     </div>
 
     <div class="fixed-footer">
-        <button class="btn-primary" onclick="openModal('modal-id')" aria-label="Participar do sorteio">
-            QUERO GANHAR ESTE PRÊMIO
-            <div class="summary-text" id="footer-summary">1.000 cotas • R$ 50,00</div>
-        </button>
-        <a href="https://wa.me/5527998708234" class="btn-whatsapp" target="_blank" aria-label="Fale conosco no WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+        <button class="btn-primary" onclick="openModal('modal-id')">QUERO GANHAR<div class="summary-text" id="footer-summary">1.000 cotas • R$ 50,00</div></button>
+        <a href="https://wa.me/5527998708234" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // ============================================
-        // FIREBASE INICIALIZAÇÃO
-        // ============================================
         const firebaseConfig = {
             apiKey: "AIzaSyAMEwL45IpJ6Vukw28UUyVOC4-DX-OY5MM",
             authDomain: "imperiodasorte-57402.firebaseapp.com",
@@ -406,362 +223,107 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // ============================================
-        // BANCO DE DADOS LOCAL E VARIAVEIS
-        // ============================================
-        let appData = {
-            title: "HONDA SAHARA 300<br>2026 ZERADA",
-            subtitle: "OU R$ 35.000 NO PIX",
-            image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80",
-            goal: 100000,
-            sold: 78500,
-            logo: null
-        };
-
-        let ticketsDB = JSON.parse(localStorage.getItem('tickets_db')) || {};
-        let pastRaffles = JSON.parse(localStorage.getItem('past_raffles')) || [
-            { id: 1, title: "Honda CG 160", image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=800&q=80", winner: "Carlos A. - Vitória" },
-            { id: 2, title: "R$ 10.000 em PIX", image: "https://images.unsplash.com/photo-1589578228447-e1aa4e96e6f1?auto=format&fit=crop&w=800&q=80", winner: "Mariana S. - Serra" },
-            { id: 3, title: "iPhone 15 Pro", image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80", winner: "João P. - Vila Velha" }
-        ];
-
-        let settings = { soundEnabled: false };
-
+        let appData = { title: "", subtitle: "", image: "", goal: 100000, sold: 78500 };
         let selectedPack = { baseQuantity: 1000, basePrice: 50, multiplier: 1, quantity: 1000, price: 50 };
         let lastSelectedElement = document.querySelector('.pack.active');
-        let currentPhone = localStorage.getItem('last_phone') || '';
 
-        // ============================================
-        // INICIALIZAÇÃO E INTEGRAÇÃO FIRESTORE
-        // ============================================
         function init() {
-            // Escuta o banco de dados em tempo real
             db.collection("config").doc("premio_atual").onSnapshot((doc) => {
-                if (doc.exists) {
-                    const data = doc.data();
-                    appData.title = data.title || appData.title;
-                    appData.subtitle = data.subtitle || appData.subtitle;
-                    appData.image = data.image || appData.image;
-                    appData.goal = data.goal || appData.goal;
-                    appData.sold = data.sold || appData.sold;
-                    updateUI();
-                    updateLuckMessage();
-                }
+                if (doc.exists) { appData = doc.data(); updateUI(); }
             });
-
-            const savedSettings = localStorage.getItem('app_settings');
-            if (savedSettings) {
-                try { settings = JSON.parse(savedSettings); } catch (e) {}
-            }
-            updateUI();
-            updateLogo();
-            startOnlineCounter();
-            renderWinners();
-            renderPastRaffles();
-            updateMultiplierDisplay();
-            updateLuckMessage();
-            document.getElementById('sound-enabled').checked = settings.soundEnabled;
-            if (currentPhone) {
-                const userPhoneInput = document.getElementById('user-phone');
-                const checkPhoneInput = document.getElementById('check-phone');
-                if (userPhoneInput) userPhoneInput.value = currentPhone;
-                if (checkPhoneInput) checkPhoneInput.value = currentPhone;
-            }
-        }
-
-        function updateUI() {
-            document.getElementById('hero-title').innerHTML = appData.title;
-            document.getElementById('hero-subtitle').innerText = appData.subtitle;
-            document.getElementById('hero-img').src = appData.image;
-            const percent = (appData.sold / appData.goal) * 100;
-            document.getElementById('percent-sold').innerText = percent.toFixed(1) + '%';
-            document.getElementById('collected-value').innerText = appData.sold.toLocaleString('pt-BR');
-            document.getElementById('progress-fill').style.width = percent + '%';
-            const ticketPrice = 0.05;
-            const soldTickets = Math.floor(appData.sold / ticketPrice);
-            document.getElementById('sold-quantity').innerText = soldTickets.toLocaleString();
-            if (percent >= 80) {
-                document.getElementById('last-units-warning').style.display = 'block';
-            } else {
-                document.getElementById('last-units-warning').style.display = 'none';
-            }
-            updateFooterSummary();
-        }
-
-        function updateFooterSummary() {
-            document.getElementById('footer-summary').innerText = 
-                `${selectedPack.quantity.toLocaleString()} cotas • R$ ${selectedPack.price.toFixed(2)}`;
-        }
-
-        function updateMultiplierDisplay() {
-            document.getElementById('mult-100').innerText = (selectedPack.baseQuantity === 100 ? selectedPack.multiplier + 'x' : '0x');
-            document.getElementById('mult-1000').innerText = (selectedPack.baseQuantity === 1000 ? selectedPack.multiplier + 'x' : '0x');
-            document.getElementById('mult-5000').innerText = (selectedPack.baseQuantity === 5000 ? selectedPack.multiplier + 'x' : '0x');
-            document.getElementById('mult-20000').innerText = (selectedPack.baseQuantity === 20000 ? selectedPack.multiplier + 'x' : '0x');
-        }
-
-        function updateLuckMessage() {
-            const percent = (appData.sold / appData.goal) * 100;
-            const msg = document.getElementById('luck-message');
-            if (percent < 30) msg.innerText = 'Comece agora, suas chances são altas!';
-            else if (percent < 60) msg.innerText = 'Mais da metade vendida! Hora de garantir suas cotas.';
-            else if (percent < 80) msg.innerText = 'Últimas oportunidades! Não fique de fora.';
-            else msg.innerText = '🔥 ÚLTIMAS COTAS! Corra!';
-        }
-
-        // ============================================
-        // LOGO E UPLOAD
-        // ============================================
-        function updateLogo() {
-            const logoDiv = document.getElementById('logo');
-            if (appData.logo) {
-                logoDiv.innerHTML = `<img src="${appData.logo}" alt="Império da Sorte">`;
-            } else {
-                logoDiv.innerText = 'IMPÉRIO DA SORTE';
-                logoDiv.style.background = 'linear-gradient(135deg, #fff 0%, var(--primary) 100%)';
-                logoDiv.style.webkitBackgroundClip = 'text';
-                logoDiv.style.webkitTextFillColor = 'transparent';
-            }
-        }
-
-        document.getElementById('logo-upload')?.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    appData.logo = event.target.result;
-                    updateLogo();
-                    document.getElementById('logo-preview').innerHTML = `<img src="${appData.logo}" style="max-height: 50px; border-radius: 5px;">`;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        function resetLogo() {
-            appData.logo = null;
-            updateLogo();
-            document.getElementById('logo-preview').innerHTML = '';
-            document.getElementById('logo-upload').value = '';
-        }
-
-        function addRaffleWithUpload() {
-            const title = document.getElementById('raffle-title').value.trim();
-            const winner = document.getElementById('raffle-winner').value.trim();
-            const fileInput = document.getElementById('raffle-image-upload');
-            if (!title || !winner || !fileInput.files || !fileInput.files[0]) return;
-            
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                pastRaffles.push({ id: Date.now(), title: title, winner: winner, image: e.target.result });
-                localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
-                renderPastRaffles();
-                closeModals();
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-
-        // ============================================
-        // SELECIONAR PACOTE
-        // ============================================
-        function selectPack(quantity, price, element) {
-            if (lastSelectedElement === element) {
-                selectedPack.multiplier++;
-            } else {
-                if (lastSelectedElement) lastSelectedElement.classList.remove('active');
-                selectedPack.multiplier = 1;
-                lastSelectedElement = element;
-                element.classList.add('active');
-            }
-            selectedPack.baseQuantity = quantity;
-            selectedPack.basePrice = price;
-            selectedPack.quantity = quantity * selectedPack.multiplier;
-            selectedPack.price = price * selectedPack.multiplier;
-            updateMultiplierDisplay();
-            updateFooterSummary();
-        }
-
-        // ============================================
-        // FLUXO DE COMPRA (Integração Mercado Pago Funcionando)
-        // ============================================
-        async function processPayment() {
-            const userPhoneInput = document.getElementById('user-phone');
-            const phone = userPhoneInput ? userPhoneInput.value : "27999999999";
-            
-            if (!phone || phone.length < 8) {
-                alert("Por favor, informe seu WhatsApp para continuar.");
-                return;
-            }
-
-            const pixCodeContainer = document.getElementById('pix-copy-code');
-            
-            // Muda a tela para o modal do PIX mostrando que está carregando
-            pixCodeContainer.innerText = "Gerando seu PIX no Mercado Pago... Aguarde.";
-            openModal('modal-pix');
-            
-            try {
-                // Chama a sua Netlify Function
-                const response = await fetch('/.netlify/functions/pix', {
-                    method: 'POST',
-                    body: JSON.stringify({ amount: selectedPack.price, phone: phone, quantity: selectedPack.quantity })
-                });
-                
-                const data = await response.json();
-                
-                if (data.qr_code) {
-                    pixCodeContainer.innerText = data.qr_code;
-                } else {
-                    pixCodeContainer.innerText = "Erro ao gerar PIX. Feche e tente novamente.";
-                    alert("Erro ao gerar pagamento: " + (data.error || "Tente novamente."));
-                }
-            } catch (error) {
-                pixCodeContainer.innerText = "Erro de conexão.";
-                alert("Erro ao conectar com o banco. Atualize a página e tente novamente.");
-            }
-        }
-        
-        function copiarPix() {
-            const pixCode = document.getElementById('pix-copy-code').innerText;
-            navigator.clipboard.writeText(pixCode);
-            alert('Código PIX copiado! Abra o app do seu banco para pagar.');
-        }
-
-        function simulateFakePayment() { /* Mantido do seu código */ }
-        function searchTickets() { /* Mantido do seu código */ }
-        function downloadTicketPDF() { /* Mantido do seu código */ }
-
-        // ============================================
-        // RENDERIZAR LISTAS
-        // ============================================
-        function renderWinners() {
-            const list = document.getElementById('winners-list');
-            list.innerHTML = '';
-        }
-
-        function renderPastRaffles() {
-            const grid = document.getElementById('raffles-grid');
-            grid.innerHTML = '';
-            pastRaffles.slice(-4).forEach(r => {
-                grid.innerHTML += `
-                    <div class="raffle-card">
-                        <img src="${r.image}" alt="${r.title}" loading="lazy">
-                        <div class="raffle-info">
-                            <h4>${r.title}</h4>
-                            <p>🏆 ${r.winner}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            const adminList = document.getElementById('admin-raffle-list');
-            if (adminList) {
-                adminList.innerHTML = '';
-                pastRaffles.forEach(r => {
-                    adminList.innerHTML += `
-                        <div class="raffle-admin-item">
-                            <span>${r.title} - ${r.winner}</span>
-                            <button onclick="removeRaffle(${r.id})">Excluir</button>
-                        </div>
-                    `;
-                });
-            }
-        }
-
-        function addRaffle() {
-            const title = prompt('Título do prêmio:');
-            if (!title) return;
-            const winner = prompt('Ganhador (ex: João - Vitória):');
-            if (!winner) return;
-            const image = prompt('URL da imagem:') || 'https://images.unsplash.com/photo-1589578228447-e1aa4e96e6f1?auto=format&fit=crop&w=800&q=80';
-            pastRaffles.push({ id: Date.now(), title, winner, image });
-            localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
-            renderPastRaffles();
-        }
-
-        function removeRaffle(id) {
-            pastRaffles = pastRaffles.filter(r => r.id !== id);
-            localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
-            renderPastRaffles();
-        }
-
-        // ============================================
-        // CONTADOR ONLINE
-        // ============================================
-        let onlineCount = 1847;
-        function startOnlineCounter() {
             setInterval(() => {
-                onlineCount += Math.floor(Math.random() * 5) + 1;
-                if (onlineCount > 3000) onlineCount = 1847;
-                document.getElementById('online-count').innerText = onlineCount.toLocaleString();
+                let count = Math.floor(Math.random() * 500) + 1500;
+                document.getElementById('online-count').innerText = count.toLocaleString();
             }, 5000);
         }
 
-        // ============================================
-        // ADMIN (Atualiza direto no Firebase)
-        // ============================================
-        function toggleAdmin() {
-            if (prompt('Senha:') !== '1234') return;
-            document.getElementById('adm-title').value = appData.title.replace(/<br>/g, '\n');
-            document.getElementById('adm-subtitle').value = appData.subtitle;
-            document.getElementById('adm-image').value = appData.image;
-            document.getElementById('adm-goal').value = appData.goal;
-            document.getElementById('adm-sold').value = appData.sold;
-            document.getElementById('sound-enabled').checked = settings.soundEnabled;
-            renderPastRaffles();
-            openModal('modal-admin');
+        function updateUI() {
+            document.getElementById('hero-title').innerHTML = appData.title || "Sorteio";
+            document.getElementById('hero-subtitle').innerText = appData.subtitle || "";
+            document.getElementById('hero-img').src = appData.image || "";
+            const percent = (appData.sold / appData.goal) * 100;
+            document.getElementById('percent-sold').innerText = percent.toFixed(1) + '%';
+            document.getElementById('progress-fill').style.width = percent + '%';
         }
 
-        function saveAdmin() {
-            appData.title = document.getElementById('adm-title').value.replace(/\n/g, '<br>');
-            appData.subtitle = document.getElementById('adm-subtitle').value;
-            appData.image = document.getElementById('adm-image').value;
-            appData.goal = parseFloat(document.getElementById('adm-goal').value) || 100000;
-            appData.sold = parseFloat(document.getElementById('adm-sold').value) || 0;
-            settings.soundEnabled = document.getElementById('sound-enabled').checked;
+        function selectPack(q, p, el) {
+            if (lastSelectedElement === el) selectedPack.multiplier++;
+            else {
+                if (lastSelectedElement) lastSelectedElement.classList.remove('active');
+                selectedPack.multiplier = 1;
+                lastSelectedElement = el;
+                el.classList.add('active');
+            }
+            selectedPack.baseQuantity = q;
+            selectedPack.basePrice = p;
+            selectedPack.quantity = q * selectedPack.multiplier;
+            selectedPack.price = p * selectedPack.multiplier;
+            document.getElementById('footer-summary').innerText = `${selectedPack.quantity.toLocaleString()} cotas • R$ ${selectedPack.price.toFixed(2)}`;
+            updateMultiplierDisplay();
+        }
 
-            // Função para mandar os dados salvos direto para o Firebase
-            const atualizarNoFirebase = () => {
-                db.collection("config").doc("premio_atual").update({
-                    title: appData.title,
-                    subtitle: appData.subtitle,
-                    image: appData.image,
-                    goal: appData.goal,
-                    sold: appData.sold
-                }).then(() => {
-                    alert("Dados atualizados com sucesso no sistema e no site de todos os clientes!");
-                }).catch((error) => {
-                    console.error("Erro ao atualizar Firebase: ", error);
+        function updateMultiplierDisplay() {
+            ['100', '1000', '5000', '20000'].forEach(id => {
+                const el = document.getElementById('mult-' + id);
+                if (el) el.innerText = (selectedPack.baseQuantity == id ? selectedPack.multiplier : 0) + 'x';
+            });
+        }
+
+        async function processPayment() {
+            const phone = document.getElementById('user-phone').value;
+            if (phone.length < 8) return alert("Informe seu WhatsApp.");
+            const pixCodeContainer = document.getElementById('pix-copy-code');
+            pixCodeContainer.innerText = "Gerando PIX no Mercado Pago...";
+            openModal('modal-pix');
+            try {
+                const res = await fetch('/.netlify/functions/pix', {
+                    method: 'POST',
+                    body: JSON.stringify({ amount: selectedPack.price, phone: phone, quantity: selectedPack.quantity })
                 });
-            };
-
-            const file = document.getElementById('adm-file').files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = e => {
-                    appData.image = e.target.result;
-                    localStorage.setItem('app_settings', JSON.stringify(settings));
-                    atualizarNoFirebase();
-                    updateUI();
-                    closeModals();
-                };
-                reader.readAsDataURL(file);
-            } else {
-                localStorage.setItem('app_settings', JSON.stringify(settings));
-                atualizarNoFirebase();
-                updateUI();
-                closeModals();
+                const data = await res.json();
+                if (data.qr_code) pixCodeContainer.innerText = data.qr_code;
+                else throw new Error();
+            } catch (e) {
+                pixCodeContainer.innerText = "Erro ao gerar PIX. Tente novamente.";
             }
         }
 
-        // ============================================
-        // UTILITÁRIOS
-        // ============================================
-        function openModal(id) {
+        function copiarPix() {
+            const code = document.getElementById('pix-copy-code').innerText;
+            navigator.clipboard.writeText(code);
+            const t = document.createElement('div');
+            t.className = 'notification';
+            t.innerHTML = `<i class="fas fa-check-circle"></i> PIX Copiado com Sucesso!`;
+            document.getElementById('notification-container').appendChild(t);
+            setTimeout(() => t.remove(), 4000);
+        }
+
+        function toggleAdmin() {
+            if (prompt('Senha:') === '1234') {
+                document.getElementById('adm-title').value = appData.title.replace(/<br>/g, '\n');
+                document.getElementById('adm-subtitle').value = appData.subtitle;
+                document.getElementById('adm-image').value = appData.image;
+                document.getElementById('adm-goal').value = appData.goal;
+                document.getElementById('adm-sold').value = appData.sold;
+                openModal('modal-admin');
+            }
+        }
+
+        async function saveAdmin() {
+            const update = {
+                title: document.getElementById('adm-title').value.replace(/\n/g, '<br>'),
+                subtitle: document.getElementById('adm-subtitle').value,
+                image: document.getElementById('adm-image').value,
+                goal: parseFloat(document.getElementById('adm-goal').value) || 1,
+                sold: parseFloat(document.getElementById('adm-sold').value) || 0
+            };
+            await db.collection("config").doc("premio_atual").set(update, { merge: true });
+            alert("Site atualizado!");
             closeModals();
-            const modal = document.getElementById(id);
-            if (modal) modal.style.display = 'block';
         }
-        function closeModals() {
-            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-        }
+
+        function openModal(id) { document.getElementById(id).style.display = 'block'; }
+        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
 
         window.onload = init;
     </script>
