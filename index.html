@@ -73,9 +73,8 @@
         .status-card { background: var(--card); margin: 20px 20px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
         .status-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.9rem; }
         .sold-percent { font-weight: 700; color: var(--primary); font-size: 1.5rem; }
-        .progress-bar { width: 100%; height: 24px; background: var(--bg-secondary); border-radius: 30px; overflow: hidden; margin: 15px 0 10px 0; border: 1px solid var(--border-light); }
+        .progress-bar { width: 100%; height: 24px; background: var(--bg-secondary); border-radius: 30px; overflow: hidden; margin-top: 5px; border: 1px solid var(--border-light); }
         .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-dark), var(--primary)); border-radius: 30px; transition: width 0.5s ease; }
-        .stats { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
         .last-units { background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; color: #ff8888; padding: 12px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: 700; font-size: 1rem; animation: blink 1.5s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
@@ -90,12 +89,15 @@
         .pack.active { border-color: var(--primary); background: rgba(255, 215, 0, 0.05); transform: scale(1.02); }
         .pack-badge { position: absolute; top: -10px; background: var(--primary); color: var(--bg); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
         .pack-quantity { font-size: 2.2rem; font-weight: 800; line-height: 1; margin: 5px 0; }
+        .pack-quantity small { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
         .pack-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 5px 0; }
+        .price-per-ticket { font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; }
         .pack-multiplier { font-size: 0.7rem; background: var(--primary-dark); color: #000; padding: 2px 8px; border-radius: 20px; margin-top: 8px; font-weight: 700; }
 
         .past-raffles, .proof-section, .faq-section { background: var(--card); margin: 25px 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); }
         .raffles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         .raffle-card { background: var(--bg-secondary); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.2s; }
+        .raffle-card:hover { transform: scale(1.02); }
         .raffle-card img { width: 100%; height: 100px; object-fit: cover; }
         .raffle-info { padding: 10px; }
         .raffle-info h4 { font-size: 0.9rem; margin-bottom: 5px; }
@@ -112,10 +114,12 @@
         .share-buttons { display: flex; gap: 10px; justify-content: center; margin: 15px 20px; }
         .share-btn { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 10px 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 0.85rem; }
 
+        /* NOTIFICAÇÃO */
         #notification-container { position: fixed; bottom: 110px; left: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
         .notification { background: var(--toast-bg); backdrop-filter: blur(10px); border-left: 5px solid var(--accent); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); animation: slideIn 0.3s ease; pointer-events: auto; max-width: 350px; margin: 0 auto; width: 100%; color: white;}
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
+        /* MODAIS */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; padding: 20px; padding-top: env(safe-area-inset-top); overflow-y: auto; }
         .modal-content { max-width: 400px; margin: 0 auto; padding: 20px 0; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
@@ -126,14 +130,17 @@
         .btn-modal { width: 100%; background: var(--primary); color: var(--bg); border: none; padding: 18px; border-radius: 15px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; margin-bottom: 10px; }
         
         .pix-box { background: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
+        /* CORREÇÃO VISUAL PIX: TEXTO BRANCO EM FUNDO ESCURO */
         .copy-field { background: #1a1a1a; border: 2px dashed #444; color: #FFFFFF !important; padding: 15px; border-radius: 15px; font-size: 0.9rem; font-weight: bold; text-align: center; word-break: break-all; margin-bottom: 15px; }
 
+        /* ADMIN */
         .admin-box { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border); }
         .admin-box h4 { margin-bottom: 15px; color: var(--primary); }
         .admin-box label { display: block; color: var(--text-muted); margin: 10px 0 5px; font-size: 0.9rem; }
         .raffle-admin-item { background: var(--bg-secondary); border-radius: 10px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
         .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; }
 
+        /* FOOTER */
         .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); padding: 12px 20px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
         .btn-primary { flex: 1; background: var(--primary); border: none; color: var(--bg); font-weight: 800; font-size: 1rem; padding: 15px 10px; border-radius: 14px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2); transition: all 0.2s; cursor: pointer; }
         .summary-text { font-size: 0.7rem; font-weight: 400; text-transform: none; margin-top: 3px; }
@@ -161,10 +168,6 @@
     <div class="status-card">
         <div class="status-header"><span>🔥 VENDIDO</span><span class="sold-percent" id="percent-sold">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-        <div class="stats">
-            <span>💰 Arrecadado: R$ <span id="collected-value">0</span></span>
-            <span>🎟️ Cotas vendidas: <span id="sold-quantity">0</span></span>
-        </div>
         <div id="last-units-warning" class="last-units" style="display: none;">⚡ ÚLTIMAS COTAS! Corra antes que acabe.</div>
     </div>
 
@@ -236,12 +239,13 @@
                 <label>Título do Prêmio</label><input type="text" id="adm-title" class="input-field">
                 <label>Subtítulo</label><input type="text" id="adm-subtitle" class="input-field">
                 
-                <label>Upload da Foto do Prêmio (Imagem)</label>
+                <label>Upload da Foto do Prêmio</label>
                 <input type="file" id="adm-image-upload" accept="image/*" class="input-field" style="padding:10px">
                 <div id="main-img-preview" style="margin-bottom:10px"></div>
 
-                <label>Meta (R$)</label><input type="number" id="adm-goal" class="input-field">
-                <label>Vendas Atuais (R$)</label><input type="number" id="adm-sold" class="input-field">
+                <label>Porcentagem Vendida (%)</label>
+                <input type="number" id="adm-percent" class="input-field" placeholder="Ex: 45.5" step="0.1" min="0" max="100">
+                
                 <button class="btn-modal" onclick="saveAdmin()">SALVAR TUDO NO BANCO</button>
             </div>
 
@@ -291,7 +295,8 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        let appData = { title: "", subtitle: "", image: "", goal: 100000, sold: 78500, logo: null };
+        // APPDATA AGORA USA progressPercent em vez de goal/sold
+        let appData = { title: "", subtitle: "", image: "", progressPercent: 0, logo: null };
         
         let pastRaffles = JSON.parse(localStorage.getItem('past_raffles')) || [
             { id: 1, title: "Honda Sahara 300", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=400", winner: "Roberto S. - Guarapari" },
@@ -321,11 +326,11 @@
             document.getElementById('hero-title').innerHTML = appData.title || "Carregando...";
             document.getElementById('hero-subtitle').innerText = appData.subtitle || "";
             document.getElementById('hero-img').src = appData.image || "https://via.placeholder.com/800";
-            const p = (appData.sold / appData.goal) * 100;
+            
+            // LÓGICA DA BARRA PERCENTUAL DIRETA
+            const p = parseFloat(appData.progressPercent) || 0;
             document.getElementById('percent-sold').innerText = p.toFixed(1) + '%';
             document.getElementById('progress-fill').style.width = p + '%';
-            document.getElementById('collected-value').innerText = appData.sold.toLocaleString('pt-BR');
-            document.getElementById('sold-quantity').innerText = Math.floor(appData.sold / 0.05).toLocaleString();
             document.getElementById('last-units-warning').style.display = p >= 80 ? 'block' : 'none';
             
             const logoDiv = document.getElementById('logo');
@@ -387,7 +392,7 @@
             setTimeout(() => t.remove(), 4000);
         }
 
-        // BUSCA DE NÚMEROS REAL
+        // BUSCA DE NÚMEROS NO FIREBASE
         async function searchTickets() {
             const phone = document.getElementById('check-phone').value;
             if (!phone) return alert("Digite seu WhatsApp.");
@@ -405,10 +410,10 @@
                         resultsDiv.innerHTML += `<div style="background:#222; padding:10px; border-radius:5px; margin-top:5px">🎟️ ${data.quantity} cotas - Ativo</div>`;
                     });
                 }
-            } catch (e) { resultsDiv.innerHTML = "Erro ao buscar. Tente mais tarde."; }
+            } catch (e) { resultsDiv.innerHTML = "Erro ao buscar. Certifique-se de que a conexão está ativa."; }
         }
 
-        // ADMIN COM UPLOAD DE IMAGEM
+        // ADMIN COM UPLOAD DA FOTO DO PRÊMIO
         let tempMainImg = null;
         document.getElementById('adm-image-upload')?.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -416,7 +421,7 @@
                 const reader = new FileReader();
                 reader.onload = (ev) => {
                     tempMainImg = ev.target.result;
-                    document.getElementById('main-img-preview').innerHTML = `<img src="${tempMainImg}" style="max-height:100px; border-radius:5px">`;
+                    document.getElementById('main-img-preview').innerHTML = `<img src="${tempMainImg}" style="max-height:100px; border-radius:5px; border:2px solid var(--primary)">`;
                 };
                 reader.readAsDataURL(file);
             }
@@ -426,8 +431,10 @@
             if (prompt('Senha de Acesso:') === '1234') {
                 document.getElementById('adm-title').value = appData.title.replace(/<br>/g, '\n');
                 document.getElementById('adm-subtitle').value = appData.subtitle;
-                document.getElementById('adm-goal').value = appData.goal;
-                document.getElementById('adm-sold').value = appData.sold;
+                
+                // CARREGA A PORCENTAGEM NO CAMPO DE ADMIN
+                document.getElementById('adm-percent').value = appData.progressPercent || 0;
+                
                 renderAdminRaffles();
                 renderAdminWinners();
                 openModal('modal-admin');
@@ -438,22 +445,23 @@
             const update = {
                 title: document.getElementById('adm-title').value.replace(/\n/g, '<br>'),
                 subtitle: document.getElementById('adm-subtitle').value,
-                goal: parseFloat(document.getElementById('adm-goal').value) || 1,
-                sold: parseFloat(document.getElementById('adm-sold').value) || 0
+                
+                // SALVA A PORCENTAGEM DIGITADA NO ADMIN
+                progressPercent: parseFloat(document.getElementById('adm-percent').value) || 0
             };
             
-            // SE HOUVER NOVO UPLOAD, ADICIONA AO UPDATE
+            // SE O DONO FIZER UPLOAD DA FOTO, ELE SUBSTITUI A ANTIGA NO BANCO
             if (tempMainImg) update.image = tempMainImg;
 
             try {
                 await db.collection("config").doc("premio_atual").set(update, { merge: true });
-                alert("Banco de dados atualizado com sucesso!");
+                alert("Site atualizado com sucesso!");
                 tempMainImg = null;
                 closeModals();
-            } catch (e) { alert("Erro ao salvar: " + e.message); }
+            } catch (e) { alert("Erro ao salvar no Firebase. Verifique as regras do banco."); }
         }
 
-        // GERENCIAMENTO DE LOGO
+        // UPLOAD DE LOGO
         document.getElementById('logo-upload')?.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -468,7 +476,7 @@
 
         function resetLogo() { db.collection("config").doc("premio_atual").update({ logo: null }); }
 
-        // RENDERIZAÇÃO DAS LISTAS
+        // LISTAS E RENDERIZAÇÃO
         function renderLists() {
             const grid = document.getElementById('raffles-grid');
             grid.innerHTML = '';
@@ -486,7 +494,6 @@
             `;
         }
 
-        // ADMIN LISTS
         function renderAdminRaffles() {
             const list = document.getElementById('admin-raffle-list');
             list.innerHTML = '';
@@ -498,7 +505,7 @@
         function addRaffle() {
             const title = prompt('Título:');
             const winner = prompt('Ganhador:');
-            const image = prompt('Link da Imagem (Upload em breve):'); // Mantido link aqui para agilizar, mas no prêmio principal é upload
+            const image = prompt('Link da Imagem para Sorteio Anterior:'); 
             if (title && winner) {
                 pastRaffles.push({ id: Date.now(), title, winner, image: image || "https://via.placeholder.com/400" });
                 localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
