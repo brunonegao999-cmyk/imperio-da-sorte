@@ -130,7 +130,6 @@
         .btn-modal { width: 100%; background: var(--primary); color: var(--bg); border: none; padding: 18px; border-radius: 15px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; margin-bottom: 10px; }
         
         .pix-box { background: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
-        /* CORREÇÃO VISUAL PIX: TEXTO BRANCO EM FUNDO ESCURO */
         .copy-field { background: #1a1a1a; border: 2px dashed #444; color: #FFFFFF !important; padding: 15px; border-radius: 15px; font-size: 0.9rem; font-weight: bold; text-align: center; word-break: break-all; margin-bottom: 15px; }
 
         /* ADMIN */
@@ -138,7 +137,7 @@
         .admin-box h4 { margin-bottom: 15px; color: var(--primary); }
         .admin-box label { display: block; color: var(--text-muted); margin: 10px 0 5px; font-size: 0.9rem; }
         .raffle-admin-item { background: var(--bg-secondary); border-radius: 10px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
-        .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; }
+        .raffle-admin-item button { background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
 
         /* FOOTER */
         .fixed-footer { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); padding: 12px 20px; padding-bottom: max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 12px; z-index: 90; }
@@ -283,7 +282,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
-        /* LÓGICA INTEGRAL - MAIS DE 400 LINHAS DE JS */
+        /* LÓGICA INTEGRAL E CORRIGIDA */
         const firebaseConfig = {
             apiKey: "AIzaSyAMEwL45IpJ6Vukw28UUyVOC4-DX-OY5MM",
             authDomain: "imperiodasorte-57402.firebaseapp.com",
@@ -295,7 +294,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // APPDATA AGORA USA progressPercent em vez de goal/sold
+        // APPDATA USANDO progressPercent
         let appData = { title: "", subtitle: "", image: "", progressPercent: 0, logo: null };
         
         let pastRaffles = JSON.parse(localStorage.getItem('past_raffles')) || [
@@ -327,7 +326,7 @@
             document.getElementById('hero-subtitle').innerText = appData.subtitle || "";
             document.getElementById('hero-img').src = appData.image || "https://via.placeholder.com/800";
             
-            // LÓGICA DA BARRA PERCENTUAL DIRETA
+            // LÓGICA DA BARRA PERCENTUAL DIRETA (SEM VALOR ARRECADADO)
             const p = parseFloat(appData.progressPercent) || 0;
             document.getElementById('percent-sold').innerText = p.toFixed(1) + '%';
             document.getElementById('progress-fill').style.width = p + '%';
