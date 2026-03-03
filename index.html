@@ -282,7 +282,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
-        /* LÓGICA INTEGRAL E CORRIGIDA */
+        /* LÓGICA INTEGRAL FIREBASE */
         const firebaseConfig = {
             apiKey: "AIzaSyAMEwL45IpJ6Vukw28UUyVOC4-DX-OY5MM",
             authDomain: "imperiodasorte-57402.firebaseapp.com",
@@ -294,15 +294,16 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // APPDATA USANDO progressPercent
+        // VARIÁVEIS GLOBAIS
         let appData = { title: "", subtitle: "", image: "", progressPercent: 0, logo: null };
         
-        let pastRaffles = JSON.parse(localStorage.getItem('past_raffles')) || [
+        // VALORES PADRÃO INICIAIS (Caso o Firebase ainda esteja vazio)
+        let pastRaffles = [
             { id: 1, title: "Honda Sahara 300", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=400", winner: "Roberto S. - Guarapari" },
             { id: 2, title: "iPhone 15 Pro", image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400", winner: "João P. - Vitória" }
         ];
 
-        let winnersList = JSON.parse(localStorage.getItem('winners_list')) || [
+        let winnersList = [
             { id: 1, name: "Roberto S.", prize: "Honda Sahara 300" },
             { id: 2, name: "João M.", prize: "R$ 5.000,00" }
         ];
@@ -311,10 +312,24 @@
         let lastSelectedElement = document.querySelector('.pack.active');
 
         function init() {
+            // ONSNAPSHOT: Escuta alterações no Firebase em tempo real
             db.collection("config").doc("premio_atual").onSnapshot((doc) => {
                 if (doc.exists) { 
-                    appData = { ...appData, ...doc.data() }; 
+                    const data = doc.data();
+                    appData = { ...appData, ...data }; 
+                    
+                    // Atualiza as listas se existirem no Firebase
+                    if (data.pastRaffles) pastRaffles = data.pastRaffles;
+                    if (data.winnersList) winnersList = data.winnersList;
+                    
                     updateUI(); 
+                    renderLists();
+
+                    // Se o admin estiver aberto, atualiza a tela lá também
+                    if(document.getElementById('modal-admin').style.display === 'block') {
+                        renderAdminRaffles();
+                        renderAdminWinners();
+                    }
                 }
             });
             renderLists();
@@ -326,7 +341,6 @@
             document.getElementById('hero-subtitle').innerText = appData.subtitle || "";
             document.getElementById('hero-img').src = appData.image || "https://via.placeholder.com/800";
             
-            // LÓGICA DA BARRA PERCENTUAL DIRETA (SEM VALOR ARRECADADO)
             const p = parseFloat(appData.progressPercent) || 0;
             document.getElementById('percent-sold').innerText = p.toFixed(1) + '%';
             document.getElementById('progress-fill').style.width = p + '%';
@@ -391,7 +405,6 @@
             setTimeout(() => t.remove(), 4000);
         }
 
-        // BUSCA DE NÚMEROS NO FIREBASE
         async function searchTickets() {
             const phone = document.getElementById('check-phone').value;
             if (!phone) return alert("Digite seu WhatsApp.");
@@ -412,7 +425,6 @@
             } catch (e) { resultsDiv.innerHTML = "Erro ao buscar. Certifique-se de que a conexão está ativa."; }
         }
 
-        // ADMIN COM UPLOAD DA FOTO DO PRÊMIO
         let tempMainImg = null;
         document.getElementById('adm-image-upload')?.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -430,8 +442,6 @@
             if (prompt('Senha de Acesso:') === '1234') {
                 document.getElementById('adm-title').value = appData.title.replace(/<br>/g, '\n');
                 document.getElementById('adm-subtitle').value = appData.subtitle;
-                
-                // CARREGA A PORCENTAGEM NO CAMPO DE ADMIN
                 document.getElementById('adm-percent').value = appData.progressPercent || 0;
                 
                 renderAdminRaffles();
@@ -444,12 +454,9 @@
             const update = {
                 title: document.getElementById('adm-title').value.replace(/\n/g, '<br>'),
                 subtitle: document.getElementById('adm-subtitle').value,
-                
-                // SALVA A PORCENTAGEM DIGITADA NO ADMIN
                 progressPercent: parseFloat(document.getElementById('adm-percent').value) || 0
             };
             
-            // SE O DONO FIZER UPLOAD DA FOTO, ELE SUBSTITUI A ANTIGA NO BANCO
             if (tempMainImg) update.image = tempMainImg;
 
             try {
@@ -457,10 +464,9 @@
                 alert("Site atualizado com sucesso!");
                 tempMainImg = null;
                 closeModals();
-            } catch (e) { alert("Erro ao salvar no Firebase. Verifique as regras do banco."); }
+            } catch (e) { alert("Erro ao salvar no Firebase: " + e.message); }
         }
 
-        // UPLOAD DE LOGO
         document.getElementById('logo-upload')?.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -475,7 +481,6 @@
 
         function resetLogo() { db.collection("config").doc("premio_atual").update({ logo: null }); }
 
-        // LISTAS E RENDERIZAÇÃO
         function renderLists() {
             const grid = document.getElementById('raffles-grid');
             grid.innerHTML = '';
@@ -501,21 +506,25 @@
             });
         }
 
-        function addRaffle() {
+        // AGORA SALVA OS SORTEIOS NO FIREBASE
+        async function addRaffle() {
             const title = prompt('Título:');
             const winner = prompt('Ganhador:');
             const image = prompt('Link da Imagem para Sorteio Anterior:'); 
             if (title && winner) {
-                pastRaffles.push({ id: Date.now(), title, winner, image: image || "https://via.placeholder.com/400" });
-                localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
-                renderLists(); renderAdminRaffles();
+                const newRaffle = { id: Date.now(), title, winner, image: image || "https://via.placeholder.com/400" };
+                const updatedRaffles = [...pastRaffles, newRaffle];
+                try {
+                    await db.collection("config").doc("premio_atual").set({ pastRaffles: updatedRaffles }, { merge: true });
+                } catch(e) { alert("Erro ao salvar: " + e.message); }
             }
         }
 
-        function removeRaffle(id) {
-            pastRaffles = pastRaffles.filter(r => r.id !== id);
-            localStorage.setItem('past_raffles', JSON.stringify(pastRaffles));
-            renderLists(); renderAdminRaffles();
+        async function removeRaffle(id) {
+            const updatedRaffles = pastRaffles.filter(r => r.id !== id);
+            try {
+                await db.collection("config").doc("premio_atual").set({ pastRaffles: updatedRaffles }, { merge: true });
+            } catch(e) { alert("Erro ao excluir: " + e.message); }
         }
 
         function renderAdminWinners() {
@@ -526,20 +535,24 @@
             });
         }
 
-        function addWinner() {
+        // AGORA SALVA OS GANHADORES NO FIREBASE
+        async function addWinner() {
             const name = prompt('Nome do Ganhador:');
             const prize = prompt('Prêmio:');
             if (name && prize) {
-                winnersList.push({ id: Date.now(), name, prize });
-                localStorage.setItem('winners_list', JSON.stringify(winnersList));
-                renderLists(); renderAdminWinners();
+                const newWinner = { id: Date.now(), name, prize };
+                const updatedWinners = [...winnersList, newWinner];
+                try {
+                    await db.collection("config").doc("premio_atual").set({ winnersList: updatedWinners }, { merge: true });
+                } catch(e) { alert("Erro ao salvar: " + e.message); }
             }
         }
 
-        function removeWinner(id) {
-            winnersList = winnersList.filter(w => w.id !== id);
-            localStorage.setItem('winners_list', JSON.stringify(winnersList));
-            renderLists(); renderAdminWinners();
+        async function removeWinner(id) {
+            const updatedWinners = winnersList.filter(w => w.id !== id);
+            try {
+                await db.collection("config").doc("premio_atual").set({ winnersList: updatedWinners }, { merge: true });
+            } catch(e) { alert("Erro ao excluir: " + e.message); }
         }
 
         function startOnlineCounter() {
